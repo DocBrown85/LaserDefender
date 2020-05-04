@@ -13,6 +13,10 @@ public class Enemy : MonoBehaviour
     [SerializeField] float projectileSpeed = 10f;
     [SerializeField] GameObject deathVFX;
     [SerializeField] float durationOfExplosion = 1f;
+    [SerializeField] AudioClip deathSFX;
+    [SerializeField][Range(0,1)] float deathSFXVolume = 0.5f;
+    [SerializeField] AudioClip shootSFX;
+    [SerializeField] [Range(0, 1)] float shootSFXVolume = 0.25f;
 
     private void Start()
     {
@@ -38,6 +42,7 @@ public class Enemy : MonoBehaviour
         GameObject laser = Instantiate(projectile, transform.position, Quaternion.identity) as GameObject;
         // projectileSpeed is negative because the enemy has to shoot downwards
         laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -1 * projectileSpeed);
+        AudioSource.PlayClipAtPoint(shootSFX, Camera.main.transform.position, shootSFXVolume);
         shotCounter = UnityEngine.Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
     }
 
@@ -67,5 +72,6 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
         GameObject explosion = Instantiate(deathVFX, transform.position, transform.rotation);
         Destroy(explosion, durationOfExplosion);
+        AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathSFXVolume);
     }
 }
