@@ -97,7 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   padding: 1
-  health: 1000000
+  health: 500
   deathSFX: {fileID: 8300000, guid: 48fe66cb7b2593b47ab3a33e8ffab4ca, type: 3}
   deathSFXVolume: 0.5
   shootSFX: {fileID: 8300000, guid: 749fa289c722ddb4a9e2c20d7f34c0c4, type: 3}
