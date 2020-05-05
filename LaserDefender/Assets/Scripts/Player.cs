@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     [Header("Player")]
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] float padding = 1f;
-    [SerializeField] float health = 200f;
+    [SerializeField] int health = 200;
     [SerializeField] AudioClip deathSFX;
     [SerializeField] [Range(0, 1)] float deathSFXVolume = 0.5f;
     [SerializeField] AudioClip shootSFX;
@@ -89,6 +89,11 @@ public class Player : MonoBehaviour
         {
             StopCoroutine(firingCoroutine);
         }
+    }
+
+    public int GetHealth()
+    {
+        return health;
     }
 
     IEnumerator FireContinuously()
